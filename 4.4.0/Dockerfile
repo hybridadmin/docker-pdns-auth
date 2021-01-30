@@ -42,6 +42,7 @@ RUN chown pdns:pdns -R /var/lib/powerdns \
 
 EXPOSE 53/tcp
 EXPOSE 53/udp
+EXPOSE 8081/tcp
 
 #VOLUME "/etc/powerdns/"
 WORKDIR "/etc/powerdns/"

@@ -27,7 +27,7 @@ To run older versions use the version tag for the required container image, i.e 
 docker run -d -p 53:53/udp -p 53:53/tcp --restart=always hybridadmin/pdns-auth:4.3.0
 ```
 
-To add a dns zone from outide the container:
+To add a dns zone from outside the container:
 ```console
 docker exec --tty [container_id] env TERM=xterm pdnsutil create-zone texample.com
 docker exec --tty [container_id] env TERM=xterm pdnsutil add-record example.com @ NS ns1.texample.com

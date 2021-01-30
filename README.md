@@ -9,7 +9,7 @@
 ## What is PowerDNS Authoritative Nameserver ?
 
 PowerDNS Authoritative Nameserver is a versatile nameserver which supports a large number of backends. These backends can either be plain zone files or be more dynamic in nature.
-> [doc.powerdns.com/authoritative](https://doc.powerdns.com/authoritative/)
+> [`doc.powerdns.com/authoritative`](https://doc.powerdns.com/authoritative/)
 
 ## How to use this image
 
@@ -63,4 +63,4 @@ lmdb-filename=/var/lib/powerdns/pdns.lmdb
 lmdb-sync-mode=nometasync
 ```
 
-Additional settings from the official configuration documentation at https://doc.powerdns.com/authoritative/settings.html can be added as well if needed.
+Additional settings from the official configuration [`documentation`](https://doc.powerdns.com/authoritative/settings.html) can be added as well if needed.

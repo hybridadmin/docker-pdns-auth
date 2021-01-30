@@ -42,31 +42,25 @@ docker exec -it [container_id] /bin/bash
 
 ### Configuration Settings
 
-By default, the settings below have been configured in /etc/powerdns/recursor.conf inside the container.
+By default, the settings below have been configured in `/etc/powerdns/pdns.d/pdns.lmdb.conf` inside the container.
 
-Example `recursor.conf`:
+Example `pdns.lmdb.conf`:
 ```
-    local-address=0.0.0.0
-    allow-from=0.0.0.0/0
-    version-string=Not Supported
-    setuid=daemon
-    setgid=daemon
-    max-cache-ttl=28800
-    max-negative-ttl=3600
-    packetcache-ttl=3600
-    gettag-needs-edns-options=yes
-    use-incoming-edns-subnet=yes
-    any-to-tcp=yes
-    reuseport=yes
-    socket-dir=/var/run
+local-port=53
+master=yes
+slave=no
+loglevel=9
+setgid=pdns
+setuid=pdns
+version-string=Not-Supported
+
+log-dns-details=yes
+log-dns-queries=yes
+
+# https://doc.powerdns.com/authoritative/backends/lmdb.html
+launch=lmdb
+lmdb-filename=/var/lib/powerdns/pdns.lmdb
+lmdb-sync-mode=nometasync
 ```
 
-Additional settings from the official configuration documentation at https://doc.powerdns.com/recursor/settings.html can be added as well if needed.
-
-
-
-# User feedback
-
-## Documentation
-
-Documentation fo PowerDNS Recursor is available on the [project's website](https://doc.powerdns.com/recursor/).
+Additional settings from the official configuration documentation at https://doc.powerdns.com/authoritative/settings.html can be added as well if needed.

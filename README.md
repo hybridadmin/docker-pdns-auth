@@ -29,11 +29,11 @@ docker run -d -p 53:53/udp -p 53:53/tcp --restart=always hybridadmin/pdns-auth:4
 
 To add a dns zone from outside the container:
 ```console
-docker exec --tty [container_id] env TERM=xterm pdnsutil create-zone texample.com
-docker exec --tty [container_id] env TERM=xterm pdnsutil add-record example.com @ NS ns1.texample.com
-docker exec --tty [container_id] env TERM=xterm pdnsutil add-record example.com @ NS ns2.texample.com
+docker exec --tty [container_id] env TERM=xterm pdnsutil create-zone example.com
+docker exec --tty [container_id] env TERM=xterm pdnsutil add-record example.com @ NS ns1.example.com
+docker exec --tty [container_id] env TERM=xterm pdnsutil add-record example.com @ NS ns2.example.com
 docker exec --tty [container_id] env TERM=xterm chown pdns -R /var/lib/powerdns
-``` 
+```
 
 Connect to the container:
 ```console

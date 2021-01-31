@@ -32,13 +32,15 @@ RUN curl https://repo.powerdns.com/FD380FBB-pub.asc -o /tmp/FD380FBB-pub.asc && 
       ldnsutils \
     && mkdir -p /etc/powerdns/pdns.d /var/lib/powerdns
 
-ADD pdns.conf /etc/powerdns/pdns.d/pdns.lmdb.conf
+#ADD pdns.conf /etc/powerdns/pdns.d/pdns.lmdb.conf
 
 RUN chown pdns:pdns -R /var/lib/powerdns \
     && rm -rf \
         /tmp/* \
         /var/tmp/* \
         /var/lib/apt/lists/*
+
+COPY ./docker-entrypoint.sh /usr/bin/
 
 EXPOSE 53/tcp
 EXPOSE 53/udp
@@ -48,5 +50,5 @@ EXPOSE 8081/tcp
 WORKDIR "/etc/powerdns/"
 
 HEALTHCHECK CMD ["pdns_control", "rping", "||", "exit", "1"]
-
+ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["pdns_server"]

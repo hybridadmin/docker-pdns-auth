@@ -1,5 +1,5 @@
 # PowerDNS Authoritative Docker Image
-
+![Build](https://github.com/hybridadmin/docker-pdns-auth/workflows/Build/badge.svg?branch=main) ![Docker Pulls](https://img.shields.io/docker/pulls/hybridadmin/pdns-auth)
 
 ## Supported tags and respective `Dockerfile` links
 

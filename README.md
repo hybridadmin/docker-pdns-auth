@@ -18,13 +18,40 @@ PowerDNS Authoritative Nameserver is a versatile nameserver which supports a lar
 Run this container with the following command:
 
 ```console
-docker run -d -p 53:53/udp -p 53:53/tcp --restart=always hybridadmin/pdns-auth:latest
+docker run -d -p 53:53/udp -p 53:53/tcp -p 8081:8081/tcp --restart=always hybridadmin/pdns-auth:latest
 ```
 
 To run older versions use the version tag for the required container image, i.e for version 4.3.0, run the following command:
 
 ```console
-docker run -d -p 53:53/udp -p 53:53/tcp --restart=always hybridadmin/pdns-auth:4.3.0
+docker run -d -p 53:53/udp -p 53:53/tcp -p 8081:8081/tcp --restart=always hybridadmin/pdns-auth:4.3.0
+```
+
+To run the container with customized settings:
+```
+docker run -d --name tester00 \
+-e IS_MASTER=yes `#optional` \
+-e IS_SLAVE=no `#optional` \
+-e ALLOW_AXFR_IPS=127.0.0.0/8,::1 `#optional` \
+-e ALLOW_NOTIFY_FROM_IPS=0.0.0.0/0 `#optional` \
+-e ALLOW_WEB_ACCESS=yes `#optional` \
+-e WEBSERVER_PASSWORD=changemepass `#optional` \
+-e ALLOW_API_ACCESS=yes `#optional` \
+-e API_KEY=dfdfdfdf `#optional` \
+-e DISABLE_AXFR=yes `#optional` \
+-e DISABLE_SYSLOG=yes `#optional` \
+-e DNAME_PROCESSING=no `#optional` \
+-e EXPAND_ALIAS=no `#optional` \
+-e USE_GUARDIAN=no `#optional` \
+-e LOG_DNS_DETAILS=no `#optional` \
+-e LOG_DNS_QUERIES=no `#optional` \
+-e MAX_TCP_CONNECTION_DURATION=0 `#optional` \
+-e MAX_TCP_CONNECTIONS=20 `#optional` \
+-e QUERY_LOGGING=no `#optional` \
+-e RECEIVER_THREADS=2 `#optional` \
+-e RETRIEVAL_THREADS=2 `#optional` \
+-e SIGNING_THREADS=2 `#optional` \
+-p 53:53/udp -p 53:53/tcp -p 8081:8081/tcp --restart=always hybridadmin/pdns-auth:latest
 ```
 
 To add a dns zone from outside the container:

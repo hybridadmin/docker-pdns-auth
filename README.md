@@ -54,20 +54,14 @@ services:
 
 ### docker cli
 
-Run a container with the following command:
+Run a container with default settings:
 
 ```console
 docker run -d -p 53:53/udp -p 53:53/tcp -p 8081:8081/tcp --restart=always hybridadmin/pdns-auth:latest
 ```
 
-To run older versions use the version tag for the required container image, i.e for version 4.3.0, run the following command:
-
+To run a container with customized settings:
 ```console
-docker run -d -p 53:53/udp -p 53:53/tcp -p 8081:8081/tcp --restart=always hybridadmin/pdns-auth:4.3.0
-```
-
-To run the container with customized settings:
-```
 docker run -d --name tester00 \
 -e IS_MASTER=yes `#optional` \
 -e IS_SLAVE=no `#optional` \

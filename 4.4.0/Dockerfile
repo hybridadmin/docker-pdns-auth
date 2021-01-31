@@ -38,7 +38,7 @@ RUN chown pdns:pdns -R /var/lib/powerdns \
         /var/tmp/* \
         /var/lib/apt/lists/*
 
-COPY ./docker-entrypoint.sh /usr/bin/
+ADD docker-entrypoint.sh /usr/bin/docker-entrypoint.sh
 
 RUN chmod a+x /usr/bin/docker-entrypoint.sh
 

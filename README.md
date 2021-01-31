@@ -42,7 +42,7 @@ docker exec -it [container_id] /bin/bash
 
 ### Configuration Settings
 
-By default, the settings below will be configured in `/etc/powerdns/pdns.d/pdns.lmdb.conf`via the script [docker-entrypoint.sh](./docker-entrypoint.sh) inside the container.
+By default, the settings below will be configured in `/etc/powerdns/pdns.d/pdns.lmdb.conf`via the script [`docker-entrypoint.sh`](./docker-entrypoint.sh) inside the container.
 
 Example `pdns.lmdb.conf`:
 ```

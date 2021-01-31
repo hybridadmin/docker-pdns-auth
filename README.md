@@ -42,25 +42,48 @@ docker exec -it [container_id] /bin/bash
 
 ### Configuration Settings
 
-By default, the settings below have been configured in `/etc/powerdns/pdns.d/pdns.lmdb.conf` inside the container.
+By default, the settings below will be configured in `/etc/powerdns/pdns.d/pdns.lmdb.conf`via the script [docker-entrypoint.sh](./docker-entrypoint.sh) inside the container.
 
 Example `pdns.lmdb.conf`:
 ```
+allow-axfr-ips=127.0.0.0/8,::1
+allow-notify-from=0.0.0.0/0,::/0
+api=yes
+api-key=changemeapi
+disable-axfr=yes
+disable-syslog=yes
+dname-processing=no
+expand-alias=no
+guardian=no
+local-address=0.0.0.0
 local-port=53
-master=yes
-slave=no
-loglevel=9
+log-dns-details=no
+log-dns-queries=no
 setgid=pdns
 setuid=pdns
+loglevel=4
+master=yes
+max-tcp-connection-duration=0
+max-tcp-connections=20
+query-logging=yes
+receiver-threads=1
+resolver=no
+retrieval-threads=2
+reuseport=yes
+signing-threads=3
+slave=no
+tcp-fast-open=0
 version-string=Not-Supported
-
-log-dns-details=yes
-log-dns-queries=yes
-
-# https://doc.powerdns.com/authoritative/backends/lmdb.html
+webserver=yes
+webserver-address=0.0.0.0
+webserver-allow-from=0.0.0.0/0
+webserver-password=changemeweb
+webserver-port=8081
 launch=lmdb
 lmdb-filename=/var/lib/powerdns/pdns.lmdb
 lmdb-sync-mode=nometasync
 ```
+
+> Note: The configuration above uses the [`lmdb backend`](https://doc.powerdns.com/authoritative/backends/lmdb.html#).
 
 Additional settings from the official configuration [`documentation`](https://doc.powerdns.com/authoritative/settings.html) can be added as well if needed.

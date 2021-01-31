@@ -32,8 +32,6 @@ RUN curl https://repo.powerdns.com/FD380FBB-pub.asc -o /tmp/FD380FBB-pub.asc && 
       ldnsutils \
     && mkdir -p /etc/powerdns/pdns.d /var/lib/powerdns
 
-#ADD pdns.conf /etc/powerdns/pdns.d/pdns.lmdb.conf
-
 RUN chown pdns:pdns -R /var/lib/powerdns \
     && rm -rf \
         /tmp/* \
@@ -41,6 +39,8 @@ RUN chown pdns:pdns -R /var/lib/powerdns \
         /var/lib/apt/lists/*
 
 COPY ./docker-entrypoint.sh /usr/bin/
+
+RUN chmod a+x /usr/bin/docker-entrypoint.sh
 
 EXPOSE 53/tcp
 EXPOSE 53/udp

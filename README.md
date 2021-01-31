@@ -100,7 +100,7 @@ Connect to the container:
 docker exec -it [container_id] /bin/bash
 ```
 
-### Configuration Settings
+## Configuration Settings
 
 By default, the settings below will be configured in `/etc/powerdns/pdns.d/pdns.lmdb.conf`via the script [`docker-entrypoint.sh`](./docker-entrypoint.sh) inside the container.
 
@@ -147,3 +147,29 @@ lmdb-sync-mode=nometasync
 > Note: The configuration above uses the [`lmdb backend`](https://doc.powerdns.com/authoritative/backends/lmdb.html#).
 
 Additional settings from the official configuration [`documentation`](https://doc.powerdns.com/authoritative/settings.html) can be added as well if needed.
+
+## Environment Variables
+
+| Variable | Function |
+| :----: | --- |
+| `IS_MASTER` | Act as a master server |
+| `IS_SLAVE` | Act as a slave server |
+| `ALLOW_AXFR_IPS` | Only these IP addresses or netmasks will be able to perform AXFR without TSIG |
+| `ALLOW_NOTIFY_FROM_IPS` | Allow AXFR NOTIFY from these IP ranges |
+| `ALLOW_WEB_ACCESS` | Enable a webserver for monitoring|
+| `WEBSERVER_PASSWORD` | The plaintext password required for accessing the webserver |
+| `ALLOW_API_ACCESS` | Enable/disable the Built-in Webserver and HTTP API |
+| `API_KEY` | API key to be used for api calls to the server |
+| `DISABLE_AXFR` | Disallow zone transfers |
+| `DISABLE_SYSLOG` | Log only to stdout and not syslog |
+| `DNAME_PROCESSING` | Synthesise CNAME records from DNAME records as required |
+| `EXPAND_ALIAS` | Allow ALIAS records to be expanded |
+| `USE_GUARDIAN` | Run within a guardian process |
+| `LOG_DNS_DETAILS` | Specify whether DNS details will sent to syslog |
+| `LOG_DNS_QUERIES` | Specify whether PowerDNS will log all incoming DNS queries |
+| `MAX_TCP_CONNECTION_DURATION` | Maximum time in seconds that a TCP DNS connection is allowed to stay open |
+| `MAX_TCP_CONNECTIONS` | Amount of incoming TCP DNS connections allowed simultaneously |
+| `QUERY_LOGGING` | Hints to a backend that it should log a textual representation of queries it performs. |
+| `RECEIVER_THREADS` | Number of listening threads to start |
+| `RETRIEVAL_THREADS` | Number of AXFR slave threads to start |
+| `SIGNING_THREADS` | Number of threads to be used for signing |

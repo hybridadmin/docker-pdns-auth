@@ -45,7 +45,7 @@ jobs:
             --push \
             --platform ${{ matrix.distribution.platform }} \
             --file=${{ matrix.distribution.version }}/Dockerfile \
-            $(for i in $(echo ${{ matrix.distribution.tags }} | sed "s/,/ /g"); do echo "--tag hybridadmin/ansible-${{ matrix.distribution.image }}:$i "; done) \
+            $(for i in $(echo ${{ matrix.distribution.tags }} | sed "s/,/ /g"); do echo "--tag hybridadmin/${{ matrix.distribution.image }}:$i "; done) \
             .
 
       - name: Update Repo Readme/Description

@@ -11,11 +11,50 @@
 PowerDNS Authoritative Nameserver is a versatile nameserver which supports a large number of backends. These backends can either be plain zone files or be more dynamic in nature.
 > [`doc.powerdns.com/authoritative`](https://doc.powerdns.com/authoritative/)
 
-## How to use this image
+## Usage
 
-### Standard usage
+### docker-compose
 
-Run this container with the following command:
+```yaml
+---
+version: "3.2"
+services:
+  pdns-auth:
+    image: hybridadmin/pdns-auth:latest
+    container_name: pdns-auth-server
+    hostname: pdns-auth-server #optional
+    environment:
+      - IS_MASTER=yes
+      - IS_SLAVE=no
+      - ALLOW_AXFR_IPS=127.0.0.0/8,::1 #optional
+      - ALLOW_NOTIFY_FROM_IPS=0.0.0.0/0 #optional
+      - ALLOW_WEB_ACCESS=yes #optional
+      - WEBSERVER_PASSWORD=changemepass #optional
+      - ALLOW_API_ACCESS=yes #optional
+      - API_KEY=dfdfdfdf #optional
+      - DISABLE_AXFR=yes #optional
+      - DISABLE_SYSLOG=yes #optional
+      - DNAME_PROCESSING=no #optional
+      - EXPAND_ALIAS=no #optional
+      - USE_GUARDIAN=no #optional
+      - LOG_DNS_DETAILS=no #optional
+      - LOG_DNS_QUERIES=no #optional
+      - MAX_TCP_CONNECTION_DURATION=0 #optional
+      - MAX_TCP_CONNECTIONS=20 #optional
+      - QUERY_LOGGING=no #optional
+      - RECEIVER_THREADS=2 #optional
+      - RETRIEVAL_THREADS=2 #optional
+      - SIGNING_THREADS=2 #optional
+    ports:
+      - 53:53/tcp
+      - 53:53/udp
+      - 8081:8081/tcp
+    restart: always
+```
+
+### docker cli
+
+Run a container with the following command:
 
 ```console
 docker run -d -p 53:53/udp -p 53:53/tcp -p 8081:8081/tcp --restart=always hybridadmin/pdns-auth:latest

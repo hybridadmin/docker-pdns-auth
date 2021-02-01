@@ -22,6 +22,10 @@ jobs:
             version: "4.4.0"
             platform: "linux/amd64"
             tags: "4.4.0,latest"
+          - image: pdns-auth
+            version: "master"
+            platform: "linux/amd64"
+            tags: "master"
 
     steps:
       - name: Checkout repository

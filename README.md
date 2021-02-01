@@ -3,6 +3,7 @@
 
 ## Supported tags and respective `Dockerfile` links
 
+- [`master`](https://github.com/hybridadmin/docker-pdns-auth/tree/main/master/Dockerfile)
 - [`4.4.0`, `latest`](https://github.com/hybridadmin/docker-pdns-auth/tree/main/4.4.0/Dockerfile)
 - [`4.3.0`](https://github.com/hybridadmin/docker-pdns-auth/tree/main/4.3.0/Dockerfile)
 
@@ -89,10 +90,9 @@ docker run -d --name tester00 \
 
 To add a dns zone from outside the container:
 ```console
-docker exec --tty [container_id] env TERM=xterm pdnsutil create-zone example.com
-docker exec --tty [container_id] env TERM=xterm pdnsutil add-record example.com @ NS ns1.example.com
-docker exec --tty [container_id] env TERM=xterm pdnsutil add-record example.com @ NS ns2.example.com
-docker exec --tty [container_id] env TERM=xterm chown pdns -R /var/lib/powerdns
+docker exec --tty --user pdns [container_id] env TERM=xterm pdnsutil create-zone example.com
+docker exec --tty --user pdns [container_id] env TERM=xterm pdnsutil add-record example.com @ NS ns1.example.com
+docker exec --tty --user pdns [container_id] env TERM=xterm pdnsutil add-record example.com @ NS ns2.example.com
 ```
 
 Connect to the container:

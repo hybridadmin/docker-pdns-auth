@@ -1,4 +1,4 @@
-FROM ubuntu:focal as powerdns
+FROM debian:buster-slim as powerdns
 LABEL maintainer="Tinashe Chikomo"
 
 ENV NAME=pdns \

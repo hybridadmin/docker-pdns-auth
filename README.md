@@ -58,12 +58,12 @@ services:
 Run a container with default settings:
 
 ```console
-docker run -d -p 53:53/udp -p 53:53/tcp -p 8081:8081/tcp --restart=always hybridadmin/pdns-auth:latest
+docker run --name pdns-auth -d -p 53:53/udp -p 53:53/tcp -p 8081:8081/tcp --restart=always hybridadmin/pdns-auth:latest
 ```
 
 To run a container with customized settings:
 ```console
-docker run -d --name tester00 \
+docker run -d --name pdns-auth \
 -e IS_MASTER=yes `#optional` \
 -e IS_SLAVE=no `#optional` \
 -e ALLOW_AXFR_IPS=127.0.0.0/8,::1 `#optional` \

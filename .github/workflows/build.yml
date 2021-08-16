@@ -21,15 +21,15 @@ jobs:
           - image: pdns-auth
             version: "4.4.0"
             platform: "linux/amd64"
-            tags: "4.4.0,latest"
+            tags: "4.4.0"
           - image: pdns-auth
             version: "master"
             platform: "linux/amd64"
             tags: "master"
-#          - image: pdns-auth
-#            version: "4.5.0"
-#            tags: "4.5.0"
-#            platform: "linux/amd64"
+          - image: pdns-auth
+            version: "4.5.0"
+            tags: "4.5.0,latest"
+            platform: "linux/amd64"
 
     steps:
       -

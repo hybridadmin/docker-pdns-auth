@@ -4,7 +4,8 @@
 ## Supported tags and respective `Dockerfile` links
 
 - [`master`](https://github.com/hybridadmin/docker-pdns-auth/tree/main/master/Dockerfile)
-- [`4.4.0`, `latest`](https://github.com/hybridadmin/docker-pdns-auth/tree/main/4.4.0/Dockerfile)
+- [`4.5.0`, `latest`](https://github.com/hybridadmin/docker-pdns-auth/tree/main/4.5.0/Dockerfile)
+- [`4.4.0`](https://github.com/hybridadmin/docker-pdns-auth/tree/main/4.4.0/Dockerfile)
 - [`4.3.0`](https://github.com/hybridadmin/docker-pdns-auth/tree/main/4.3.0/Dockerfile)
 
 ## What is PowerDNS Authoritative Nameserver ?
@@ -18,7 +19,7 @@ PowerDNS Authoritative Nameserver is a versatile nameserver which supports a lar
 
 ```yaml
 ---
-version: "3.2"
+version: "3"
 services:
   pdns-auth:
     image: hybridadmin/pdns-auth:latest

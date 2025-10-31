@@ -1,12 +1,12 @@
 # PowerDNS Authoritative Docker Image
-![Build](https://github.com/hybridadmin/docker-pdns-auth/workflows/Build/badge.svg?branch=main) ![Docker Pulls](https://img.shields.io/docker/pulls/hybridadmin/pdns-auth)
+
+[![Build](https://github.com/hybridadmin/docker-pdns-auth/actions/workflows/build.yml/badge.svg)](https://github.com/hybridadmin/docker-pdns-auth/actions/workflows/build.yml) ![Docker Pulls](https://img.shields.io/docker/pulls/hybridadmin/pdns-auth)
 
 ## Supported tags and respective `Dockerfile` links
 
-- [`master`](https://github.com/hybridadmin/docker-pdns-auth/tree/main/master/Dockerfile)
-- [`4.5.0`, `latest`](https://github.com/hybridadmin/docker-pdns-auth/tree/main/4.5.0/Dockerfile)
-- [`4.4.0`](https://github.com/hybridadmin/docker-pdns-auth/tree/main/4.4.0/Dockerfile)
-- [`4.3.0`](https://github.com/hybridadmin/docker-pdns-auth/tree/main/4.3.0/Dockerfile)
+- [`5.0`, `latest`](https://github.com/hybridadmin/docker-pdns-auth/tree/main/5.0/Dockerfile)
+- [`4.9`](https://github.com/hybridadmin/docker-pdns-auth/tree/main/4.9/Dockerfile)
+- [`4.8`](https://github.com/hybridadmin/docker-pdns-auth/tree/main/4.8/Dockerfile)
 
 ## What is PowerDNS Authoritative Nameserver ?
 
@@ -26,8 +26,6 @@ services:
     container_name: pdns-auth-server
     hostname: pdns-auth-server #optional
     environment:
-      - IS_MASTER=yes
-      - IS_SLAVE=no
       - ALLOW_AXFR_IPS=127.0.0.0/8,::1 #optional
       - ALLOW_NOTIFY_FROM_IPS=0.0.0.0/0 #optional
       - ALLOW_WEB_ACCESS=yes #optional
@@ -65,8 +63,6 @@ docker run --name pdns-auth -d -p 53:53/udp -p 53:53/tcp -p 8081:8081/tcp --rest
 To run a container with customized settings:
 ```console
 docker run -d --name pdns-auth \
--e IS_MASTER=yes `#optional` \
--e IS_SLAVE=no `#optional` \
 -e ALLOW_AXFR_IPS=127.0.0.0/8,::1 `#optional` \
 -e ALLOW_NOTIFY_FROM_IPS=0.0.0.0/0 `#optional` \
 -e ALLOW_WEB_ACCESS=yes `#optional` \
@@ -123,7 +119,6 @@ log-dns-queries=no
 setgid=pdns
 setuid=pdns
 loglevel=4
-master=yes
 max-tcp-connection-duration=0
 max-tcp-connections=20
 query-logging=yes
@@ -132,7 +127,6 @@ resolver=no
 retrieval-threads=2
 reuseport=yes
 signing-threads=3
-slave=no
 tcp-fast-open=0
 version-string=Not-Supported
 webserver=yes
@@ -153,8 +147,6 @@ Additional settings from the official configuration [`documentation`](https://do
 
 | Variable | Function |
 | :----: | --- |
-| `IS_MASTER` | Act as a master server |
-| `IS_SLAVE` | Act as a slave server |
 | `ALLOW_AXFR_IPS` | Only these IP addresses or netmasks will be able to perform AXFR without TSIG |
 | `ALLOW_NOTIFY_FROM_IPS` | Allow AXFR NOTIFY from these IP ranges |
 | `ALLOW_WEB_ACCESS` | Enable a webserver for monitoring|
